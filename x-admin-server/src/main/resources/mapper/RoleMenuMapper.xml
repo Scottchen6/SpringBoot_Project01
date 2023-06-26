@@ -13,4 +13,18 @@
     <sql id="Base_Column_List">
         id,role_id,menu_id
     </sql>
+
+    <select id="getMenuIdListByRoleId" resultType="Integer">
+        select a.menu_id
+        from x_role_menu a ,x_menu b
+        where a.menu_id = b.menu_id
+        and b.is_leaf = 'Y'
+        and a.role_id = #{roleId}
+    </select>
+
+    <delete id="deleteByRoleId">
+        delete from x_role_menu where role_id = #{roleId}
+    </delete>
+
+
 </mapper>

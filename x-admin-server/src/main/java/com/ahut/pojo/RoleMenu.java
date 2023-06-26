@@ -5,7 +5,11 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import java.util.List;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 
@@ -13,6 +17,8 @@ import lombok.Data;
  */
 @TableName(value ="x_role_menu")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class RoleMenu implements Serializable {
     /**
      * 
@@ -32,4 +38,5 @@ public class RoleMenu implements Serializable {
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+
 }

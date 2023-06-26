@@ -18,4 +18,13 @@ public interface UserService extends IService<User> {
     Map<String, Object> loginInfo(String token);
 
     String logout( String token);
+
+    void addUser(User user);
+
+    User getUserById(Integer id);
+
+    void updateUser(User user);
+
+    void removeUser(Integer id);
+
 }

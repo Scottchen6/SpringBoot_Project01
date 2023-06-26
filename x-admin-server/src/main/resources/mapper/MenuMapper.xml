@@ -23,4 +23,15 @@
         icon,parent_id,is_leaf,
         hidden
     </sql>
+
+    <select id="getMenuListByUserId" resultType="com.ahut.pojo.Menu">
+        select distinct a.*
+        from x_menu a,
+             x_role_menu b,
+             x_user_role c
+        where a.menu_id=b.menu_id
+          and b.role_id=c.role_id
+          and c.user_id=#{userId}
+          and a.parent_id=#{parentId}
+    </select>
 </mapper>

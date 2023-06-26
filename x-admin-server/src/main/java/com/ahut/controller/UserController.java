@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import javax.management.ObjectName;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,7 +22,7 @@ import java.util.Map;
 @RequestMapping("/user")
 
 //解决跨域问题的注解
-@CrossOrigin
+//@CrossOrigin
 
 public class UserController {
 
@@ -116,7 +115,7 @@ public class UserController {
         //使用MD5算法加密用户密码
         String encodePassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodePassword);
-        userService.save(user);
+        userService.addUser(user);
         return Result.success("新增用户成功！");
     }
 
@@ -129,7 +128,7 @@ public class UserController {
     @PutMapping
     public  Result<?> updateUser(@RequestBody User user){
         user.setPassword(null);
-        userService.updateById(user);
+        userService.updateUser(user);
         return Result.success("修改用户信息成功");
     }
 
@@ -140,7 +139,7 @@ public class UserController {
      */
     @GetMapping("/{id}")
     public Result<?> getUserById(@PathVariable("id") Integer id){
-        User user = userService.getById(id);
+        User user = userService.getUserById(id);
         return Result.success(user);
 
     }
@@ -153,7 +152,7 @@ public class UserController {
      */
     @DeleteMapping("/{id}")
     public Result<?> deleteUser(@PathVariable Integer id){
-        userService.removeById(id);
+        userService.removeUser(id);
         return  Result.success("删除用户成功");
     }
 

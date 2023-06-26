@@ -2,6 +2,9 @@ package com.ahut.mapper;
 
 import com.ahut.pojo.Menu;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
 * @author 86187
@@ -11,6 +14,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 */
 public interface MenuMapper extends BaseMapper<Menu> {
 
+    List<Menu> getMenuListByUserId(@Param("userId") Integer userId,@Param("parentId") Integer parentId);
 }
 
 
